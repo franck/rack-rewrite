@@ -113,7 +113,9 @@ module Rack
 
       def matches?(rack_env) #:nodoc:
         puts "==============================================="
-        puts rack_env['HTTP_REFERER']
+        puts "REFERER : #{rack_env['HTTP_REFERER']}"
+        puts "PATH INFO : #{rack_env['PATH INFO']}"
+        puts "REQUEST_URI : #{rack_env['REQUEST_URI']}"
         puts options[:if] if options[:if].respond_to?(:call)
         puts options[:if].call(rack_env) if options[:if].respond_to?(:call)
         puts "==============================================="
