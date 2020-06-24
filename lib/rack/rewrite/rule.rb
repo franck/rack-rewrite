@@ -112,6 +112,11 @@ module Rack
       end
 
       def matches?(rack_env) #:nodoc:
+        puts "==============================================="
+        puts rack_env['HTTP_REFERER']
+        puts options[:if] if options[:if].respond_to?(:call)
+        puts options[:if].call(rack_env) if options[:if].respond_to?(:call)
+        puts "==============================================="
         return false if options[:if].respond_to?(:call) && !options[:if].call(rack_env)
         path = build_path_from_env(rack_env)
 
